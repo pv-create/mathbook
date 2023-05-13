@@ -1,0 +1,463 @@
+\documentclass[14pt,a4paper]{article}
+\usepackage[14pt]{extsizes}
+\usepackage[cp1251]{inputenc}%\inputencoding{cp1251}
+\usepackage[english,russian]{babel}
+\setlength{\textwidth}{16.75cm}%
+\setlength{\textheight}{24,5cm}%
+\setlength{\topmargin}{-0.7cm}%
+\setlength{\oddsidemargin}{3mm}%
+\setlength{\evensidemargin}{3mm}
+%\usepackage{extsizes} 
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage{amstext}
+\usepackage{indentfirst}
+\usepackage{pgfplots}
+\usepackage[mathscr]{eucal}
+\usepackage{color}
+\usepackage{tikz, siunitx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usetikzlibrary{arrows}
+\usetikzlibrary{
+	calc,
+	shapes,
+	intersections,
+	intersections,
+	patterns}
+
+
+
+
+
+
+%\definecolor{col}{rgb}{0.99, 0.92, 0.7}
+% \usepackage[colorlinks=true, pdfhighlight=/P]{hyperref}
+
+\usepackage[left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\renewcommand{\baselinestretch}{1.5}    %  величина межстрочного интервала в тексте
+\setlength{\parindent}{1.25 cm}         %  величина абзаца
+\renewcommand{\arraystretch}{1}         %  величина межстрочного интервала в таблице
+% мат символы
+
+
+%оператор Ламе
+\newcommand{\LameOperator}{	\mathcal{L}_{x,t}=\frac{\partial}{\partial t} - div_n(\mu\nabla_{n})-\nabla_{n}((\mu+\lambda)div_n)}
+
+\newcommand{\Cylinder}{\Omega\times (T_1,T_2)}
+
+
+
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\DeclareMathOperator{\Log}{Log}
+\newcommand{\koshipartial}{\overline{\partial}}
+\makeatletter
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{3}
+
+\renewcommand{\contentsname}{\centering СОДЕРЖАНИЕ}
+
+\newtheorem{theorem}{\indent Tеорема}
+\newtheorem{lemma}{\indent Лемма}
+\newtheorem{remark}{\indent Замечание}
+\newtheorem{proposition}{\indent Предложение}
+\newtheorem{sled}{\indent Следствие}
+\theoremstyle{definition}
+\newtheorem{definition}{\indent Определение}
+\newtheorem{example}{\indent Пример}
+\newtheorem{problem}{\indent Задача}
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand\cftsecfont{\mdseries}
+\renewcommand\cftsecpagefont{\mdseries}
+
+\begin{document}
+\tableofcontents
+\newpage
+\section{Алгебра}
+\subsection{Уравнения}
+\subsubsection{Линейные уравнения}
+Дадим определение линейного уравнения
+\begin{definition}
+	Линейное уравнение, это уравнение вида
+	\begin{equation}
+		ax+b=c
+	\end{equation}
+	где $a, b, c$-некоторые коэффициенты(числа).
+\end{definition}
+Опишем алгоритм решения этого уравнения 2
+\begin{center}
+	$ax+b-b=c-b$\\
+	$ax=c-b$\\
+	$x=\frac{c-b}{a}$
+\end{center}
+\begin{example}
+	Решить уравнение:
+	\begin{center}
+		$2x-7=5$\\
+		$2x=12$\\
+		$x=6$
+	\end{center}
+\end{example}
+Стоит заметить, что иногда нужно перед решением привести подобные слагаемые, и раскрыть скобки, приведем пример решения такой задачи. 
+\begin{example}
+\begin{align*}
+	2x+x+7x-3x+4=5\\
+	7x+4=5\\
+	7x=1\\
+	x=\frac{1}{7}
+\end{align*}
+\end{example}
+
+\begin{problem}
+	Решите следующие уравнения
+	\begin{enumerate}
+		\item $2x + 3 = 7$
+		\item $4x - 5 = 3x + 8$
+		\item $6 - 3x = 2x + 10$
+		\item  $2(3x - 2) = 4x + 2$
+		\item $\frac{1}{2}x - 3 = \frac{1}{4}x + 5$
+	\end{enumerate}
+\end{problem}
+
+\newpage
+
+\subsubsection{Квадратные уравнения}
+\begin{definition}
+	Квадратным уравнением называется уравнение вида.
+	\begin{center}
+		$ax^2+bx+c=0$
+	\end{center}
+	Где $a,  b,  c$ числа.
+\end{definition}
+Данное уравнение может иметь один или два корня, или не иметь корней вообще.
+
+Данный вид уравнений решается с помощью формулы дискриминанта.
+\begin{center}
+	$\mathcal{D}=b^2-4ac$
+\end{center}
+Тогда корни уравнения вычисляются по формуле
+\begin{center}
+	$x_1=\frac{-b+\sqrt{\mathcal{D}}}{2a}$\\
+	$x_2=\frac{-b-\sqrt{\mathcal{D}}}{2a}$
+\end{center}
+
+\begin{problem}
+	Как количество корней уравнения зависит от значения дискриминанта.
+\end{problem}
+
+\begin{problem}
+	$2x^2-10x=0$
+\end{problem}
+\begin{problem}
+	$x^2-x-6=0$
+\end{problem}
+\begin{problem}
+	$x^2+3x=4$
+\end{problem}
+\begin{problem}
+	$x^2=2x+8$
+\end{problem}
+
+\newpage
+
+\subsection{Неравенства}
+Решение неравенств очень похоже на решение уравнений. Вспомним как решаются линейные и квадратные уравнения.
+
+
+
+
+Мы знаем, что мы можем сравнить два числа, мы знаем что 2 больше трех, а 7 меньше восьми. Для сравнения чисел мы используем следующие знаки.
+\begin{enumerate}
+	\item $>$ больше,
+	\item $<$ меньше,
+	\item $\leq$ меньше или равно,
+	\item $\geq$ больше или равно
+	\item  $=$ равно
+\end{enumerate}
+
+Числа удобно изображать на числовой прямой, как на рисунке ниже.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[latex-latex]  (-8,0) -- (8,0);
+		\foreach \x in {-7,...,7}{
+			\draw (\x,-0.1) -- (\x,0.1);
+			\node[below] at (\x,-0.1) {$\x$};
+		}
+	\end{tikzpicture}
+	\caption{Числовая пряма}
+\end{figure}
+
+\begin{example}
+	Рассмотрим неравенство:
+	\begin{equation*}
+		x> 3.
+	\end{equation*}
+	Решить данное неравенство, означает указать все такие числа, которые больше трех. Укажем данные числа на числовой прямой.\\
+	 
+	\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}
+			\draw[latex-latex] (-4.5,0) -- (4.5,0) ; %edit here for the axis
+			\foreach \x in  {-4,...,4} % edit here for the vertical lines
+			\draw[shift={(\x,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+			\foreach \x in {-4,-3,-2,-1,0,1,2,3}
+			\draw[shift={(\x,0)},color=black,fill=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+			\foreach \x in {4}
+			\draw[shift={(\x,0)},color=black,fill=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+			\draw[pattern=north east lines] (3,0)rectangle(4.5,0.1);
+		\end{tikzpicture}
+		\caption{Числа которые больше трех}
+	\end{figure}
+\end{example}
+
+
+\begin{problem}
+	Решить неравенство $x<3$. Указать решение на числовой прямой.
+\end{problem}
+
+
+
+\begin{example}
+	Рассмотрим неравенство:
+	\begin{equation*}
+		2x>8
+	\end{equation*}
+Решить данное неравенство, значить указать все такие числа (икс), которые при умножении на два будут больше восьми. Рассмотрим уравнение $2x=8$, решением данного уравнения будет $x=4$. Заметим, что числа которые меньше 4 при умножении на два меньше восьми, а числа которые больше четырех при умножении на два больше восьми.\\
+\begin{remark}
+	При решений неравенств, мы можем делить обе части неравенства на одно и тоже число (как и при решении уравнений).
+\end{remark}
+Решение неравенства указано на числовой прямой ниже.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[latex-latex] (-6.5,0) -- (6.5,0) ; %edit here for the axis
+		\foreach \x in  {-6,...,6} % edit here for the vertical lines
+		\draw[shift={(\x,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+		\foreach \x in {-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6}
+		\draw[shift={(\x,0)},color=black,fill=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+		\foreach \x in {4}
+		\draw[shift={(\x,0)},color=black,fill=black] (0pt,0pt) -- (0pt,-3pt) node[below] {$\x$};
+		\draw[pattern=north east lines] (4,0) rectangle  (6.5,0.1);
+	\end{tikzpicture}
+	\caption{Числа которые больше четырех}
+\end{figure}
+\end{example}
+\begin{problem}
+	Решить следующие неравенство.
+	\begin{equation*}
+		3x>9
+	\end{equation*}
+
+
+\end{problem}
+
+\newpage
+
+\subsection{Графики функций}
+Пусть у нас есть два множества: множество $x =\{\dots , -1, 0, 1, 2. 3, \dots\}$ и множество $y\{\dots , -1, 0, 1, 2. 3, \dots\}$. Допустим мы хотим каждому элементу множества $X$ сопоставить некоторый элемент множества $Y$, функцией мы будем называть правило этого сопоставления. Множества  $x$, $y$ можно представить как числовые прямые, тогда правила сопоставления можно представить в виде графика как на рисунке ниже.\\ 
+
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[->] (-2,0) -- (2,0) node[right] {$x$};
+		\draw[->] (0,-1) -- (0,4) node[above] {$y$};
+		\draw[color=blue, domain=-1.5:1.5] plot (\x, {\x*\x});
+	\end{tikzpicture}
+	\caption{График квадратичной функции(параболы)}
+\end{figure}
+
+
+
+
+Далее нам предстоит разобраться в том, как строить графики функций, находить пересечение двух графиков и еще очень много всего интересного...
+
+\newpage
+\subsection{Построение графиков функции}
+Покажем графики основных функций:
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+	\draw[->] (-2,0) -- (2,0) node[right] {$x$};
+	\draw[->] (0,-2) -- (0,2) node[above] {$y$};
+		\draw[scale=0.3,domain=-2.2:2.2,smooth,variable=\x,blue] plot ({\x},{\x*\x*\x});
+	\end{tikzpicture}
+	\caption{График  функции $y=x^3$}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[->] (-2,0) -- (2,0) node[right] {$x$};
+		\draw[->] (0,-2) -- (0,2) node[above] {$y$};
+		\draw (-1,-1) -- (1,1);
+	\end{tikzpicture}
+	\caption{График линейной функции}
+\end{figure}
+
+
+\newpage
+
+
+\section{Геометрия}
+
+\subsection{Треугольники}
+\subsubsection{Подобные треугольники}
+\begin{definition}
+	Подобные треугольники - это треугольники, которые имеют одинаковые соотношения сторон и углов. Если два треугольника подобны, то соответствующие их стороны пропорциональны, а соответствующие углы равны. Символически это можно записать следующим образом: если $\triangle ABC$ и $\triangle DEF$ подобны, то $\frac{AB}{DE}=\frac{BC}{EF}=\frac{AC}{DF}$ и $\angle A = \angle D, \angle B = \angle E, \angle C = \angle F$.
+\end{definition}
+\textbf{Признаки подобия треугольников}
+\begin{enumerate}
+	\item $\textbf{Признак соответствующих углов}$: если две пары углов в двух треугольниках равны, то треугольники подобны.
+	
+	Символически: Если $\angle A = \angle D, \angle B = \angle E, \angle C = \angle F$, то $\triangle ABC \sim \triangle DEF$.
+	
+	\begin{tikzpicture}[scale=1.5]
+		\draw (0,0) node[left]{$A$} -- (1.5,0) node[right]{$C$} 
+		-- (0.5,1) node[above]{$B$} -- cycle;
+		\draw (3,0) node[left]{$D$} -- (6,0) node[right]{$F$} 
+		-- (4,1.5) node[above]{$E$} -- cycle;
+	\end{tikzpicture}
+	
+	\item $\textbf{Признак угла и прилежащих к нему сторон}$: если два треугольника имеют равные углы и пропорциональные к ним прилежащие стороны, то они подобны.
+	
+	\item $\textbf{Признак соответствующих сторон}$: если соответствующие стороны двух треугольников пропорциональны, то треугольники подобны.
+	
+	Символически: Если $\frac{AB}{DE}=\frac{BC}{EF}=\frac{AC}{DF}$, то $\triangle ABC \sim \triangle DEF$.
+	
+	
+	
+	Символически: Если $\angle A = \angle D$, и $\frac{AB}{DE}=\frac{AC}{DF}$, то $\triangle ABC \sim \triangle DEF$.
+\end{enumerate}
+
+
+
+\subsubsection{Прямоугольные треугольники}
+\begin{definition}
+	Прямоугольный треугольник, это треугольник у которого один из углов равен 90 градусов.
+\end{definition}
+
+\begin{tikzpicture}[scale=1.5]
+	% координаты вершин треугольника 
+	\coordinate[label=left:$A$] (A) at (0,0);
+	\coordinate[label=right:$C$] (C) at (2,0);
+	\coordinate[label=above:$B$] (B) at (0,1.5);
+	
+	% рисуем стороны треугольника
+	\draw (A) -- (C) -- (B) -- cycle;
+	
+	% отметки углов
+	\draw (0.2,0) -- (0.2,0.2) -- (0,0.2);
+	%\draw (0.9,0) -- (0.9,0.2) -- (1.1,0.2) -- (1.1,0);
+	%\draw (0.15,1.35) -- (0.35,1.35) -- (0.35,1.55);
+	
+	% прямой угол
+	%\draw (0.5,0) -- (0.5,0.25) -- (0.75,0.25);
+	%\draw (0.75,0.2) -- (0.75,0.3) -- (0.85,0.3);
+	
+	% отметки сторон
+	
+\end{tikzpicture}
+
+Стороны которые образуют угол который равен 90 градусов называются катетами. Третья сторона называется гипотенузой.
+\begin{theorem}
+	Сумма квадратов катетов равна квадрату гипотенузы.
+\end{theorem} 
+
+
+\begin{definition}
+	Синусом угла называется отношение противолежащего катета к гипотенузе.
+\end{definition}
+
+\begin{definition}
+	Косинусом угла называется отношение прилежащего катета к гипотенузе.
+\end{definition}
+
+
+
+\subsection{Параллельные прямые}
+\begin{definition}
+	Параллельными прямыми называются прямые которые не пересекаются.
+	
+\end{definition}
+\begin{tikzpicture}[scale=1]
+	% первая параллельная прямая
+	\draw (-2,-1) -- (2,-1) node[right]{$l$};
+	
+	
+	
+	% вторая параллельная прямая
+	\draw (-2,0) -- (2,0) node[right]{$m$};
+	
+	
+	
+	% секущая
+	\draw (-1.2,1.2) -- (1.2,-1.2) node[right]{$n$};
+	
+	
+\end{tikzpicture}
+
+Здесь прямые $l$ и $m$ параллельны друг другу, а прямая $n$ пересекает их.
+
+
+
+
+
+\subsection{Четырехугольники}
+\subsubsection{Параллелограм}
+\begin{definition}
+	Параллелограмм - это четырехугольник, у которого противоположные стороны равны и параллельны. 
+\end{definition}
+\begin{tikzpicture}[scale=1.5]
+	\draw (0,0) node[left]{$A$} -- (1.5,0) node[right]{$B$} 
+	-- (2,1) node[right]{$C$} -- (0.5,1) node[left]{$D$} -- cycle;
+	\draw [dashed] (0,0) -- (0.5,1);
+	\draw [dashed] (1.5,0) -- (2,1);
+\end{tikzpicture}
+\subsubsection{Ромб}
+\begin{definition}
+	Ромб - это параллелограмм, у которого все углы равны между собой.
+	
+\end{definition}
+
+\begin{tikzpicture}[scale=1.5]
+	\draw (-2,0) node[left]{$A$} -- (1,1) node[above]{$B$} 
+	-- (4,0) node[right]{$C$} -- (1,-1) node[below]{$D$} -- cycle;
+	\draw [dashed] (-2,0) -- (1,1);
+	\draw [dashed] (1,1) -- (4,0);
+	\draw [dashed] (4,0) -- (1,-1);
+	\draw [dashed] (1,-1) -- (-2,0);
+\end{tikzpicture}
+
+Заметим, что ромб является частным случаем параллелограма. 
+
+
+
+
+
+
+
+\end{document}
+			
+			
+			
